@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)file:///C:/Users/benjk/Desktop/combo.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Line Chart - Combo Time Scale</title>
+	<script async="" src="./static/combo_files/analytics.js.download"></script><script src="./static/combo_files/moment.min.js.download"></script> 
+	<script src="./static/combo_files/Chart.js.download"></script><style type="text/css">/* Chart.js */ 
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style> 
+	<script src="./static/combo_files/utils.js.download"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+    <!--<script src="{{ url_for('static', filename='chartjs/chartjs/dist/Chart.bundle.min.js') }}"></script>-->
+    <!-- <script src="./templates/assets/chartjs/chartjs/dist/Chart.bundle.min.js"></script> -->
+    <!-- <script src="assets/chartjs/chartjs/dist/Chart.bundle.min"></script>-->
+	<style> 
+		canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div style="width:75%;"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+		<canvas id="canvas" width="907" height="453" class="chartjs-render-monitor" style="display: block; height: 363px; width: 726px;"></canvas>
+	</div>
+	<br>
+	<br>
+	<button id="randomizeData">Randomize Data</button>
+	<button id="addDataset">Add Dataset</button>
+	<button id="removeDataset">Remove Dataset</button>
+	<button id="addData">Add Data</button>
+	<button id="removeData">Remove Data</button>
+	<script>
+		var timeFormat = 'MM/DD/YYYY HH:mm';
+
+		// function newDateString(days) {
+		// 	return moment().add(days, 'd').format(timeFormat);
+		// }
+
+ var timeline = [594, 536, 680, 634, 635, 731, 714, 647, 576, 624, 553, 582]
+ var weapons_dict = {'auto_guns': [2, 2, 1, 3, 2, 2, 3, 3, 2, 1, 4, 1],
+ 'nonauto_guns': [4, 5, 7, 7, 10, 12, 12, 9, 8, 9, 8, 10],
+ 'handheld': [173, 149, 210, 204, 208, 233, 206, 207, 139, 196, 185, 178],
+ 'physical': [407, 377, 455, 414, 405, 473, 479, 416, 421, 409, 346, 377],
+ 'other': [6, 3, 7, 5, 5, 4, 8, 5, 3, 3, 4, 10],
+ 'explosive': [0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0]}
+
+		var color = Chart.helpers.color;
+		var config = {
+			type: 'bar',
+			data: {
+				labels: [
+					1,2,3,4,5,6,7,8,9,10,11,12
+				],
+				datasets: [{
+					type: 'bar',
+					label: 'Semi/Automatic Weapons',
+					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.red,
+					labels: [1,2,3,4,5,6,7,8,9,10,11,12],
+					data: weapons_dict.auto_guns,
+				}, {
+					type: 'bar',
+					label: 'Non-automatic Fire-arms',
+					backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.blue,
+					labels: [1,2,3,4,5,6,7,8,9,10,11,12],
+					data: weapons_dict.nonauto_guns
+						
+				
+				},{
+					type: 'bar',
+					label: 'Non-firearm weapons (Knives, etc)',
+					backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.red,
+					labels: [1,2,3,4,5,6,7,8,9,10,11,12],
+					data: weapons_dict.handheld
+				},{
+					type: 'bar',
+					label: 'Physical Altercations/fistfights',
+					backgroundColor: color(window.chartColors.yellow).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.red,
+					labels: [1,2,3,4,5,6,7,8,9,10,11,12],
+					data: weapons_dict.physical
+				},{
+					type: 'bar',
+					label: 'Explosives',
+					backgroundColor: color(window.chartColors.purple).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.red,
+					labels: [1,2,3,4,5,6,7,8,9,10,11,12],
+					data: weapons_dict.explosive
+				},{
+					type: 'bar',
+					label: 'Other',
+					backgroundColor: color(window.chartColors.grey).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.red,
+					labels: [1,2,3,4,5,6,7,8,9,10,11,12],
+					data: weapons_dict.other
+				}, {
+					type: 'line',
+					label: 'Total crime ',
+					backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.green,
+					fill: false,
+					labels: [1,2,3,4,5,6,7,8,9,10,11,12],
+					data: timeline
+				}]
+			},
+			options: {
+				title: {
+					text: 'Weapons in a year'
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						label: 'Month'
+					}],
+				},
+			}
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myLine = new Chart(ctx, config);
+
+		};
+
+		document.getElementById('randomizeData').addEventListener('click', function() {
+			config.data.datasets.forEach(function(dataset) {
+				dataset.data = dataset.data.map(function() {
+					return randomScalingFactor();
+				});
+			});
+
+			window.myLine.update();
+		});
+
+		var colorNames = Object.keys(window.chartColors);
+		document.getElementById('addDataset').addEventListener('click', function() {
+			var colorName = colorNames[config.data.datasets.length % colorNames.length];
+			var newColor = window.chartColors[colorName];
+			var newDataset = {
+				label: 'Dataset ' + config.data.datasets.length,
+				borderColor: newColor,
+				backgroundColor: color(newColor).alpha(0.5).rgbString(),
+				data: [],
+			};
+
+			for (var index = 0; index < config.data.labels.length; ++index) {
+				newDataset.data.push(randomScalingFactor());
+			}
+
+			config.data.datasets.push(newDataset);
+			window.myLine.update();
+		});
+
+		document.getElementById('addData').addEventListener('click', function() {
+			if (config.data.datasets.length > 0) {
+				config.data.labels.push(newDateString(config.data.labels.length));
+
+				for (var index = 0; index < config.data.datasets.length; ++index) {
+					config.data.datasets[index].data.push(randomScalingFactor());
+				}
+
+				window.myLine.update();
+			}
+		});
+
+		document.getElementById('removeDataset').addEventListener('click', function() {
+			config.data.datasets.splice(0, 1);
+			window.myLine.update();
+		});
+
+		document.getElementById('removeData').addEventListener('click', function() {
+			config.data.labels.splice(-1, 1); // remove the label first
+
+			config.data.datasets.forEach(function(dataset, datasetIndex) {
+				config.data.datasets[datasetIndex].data.pop();
+			});
+
+			window.myLine.update();
+		});
+	</script>
+
+
+
+</body></html>
