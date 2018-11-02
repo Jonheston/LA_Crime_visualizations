@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Visualization &raquo; Los Angeles Crimes</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+
+  <!-- Demo Dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js" type="text/javascript"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.3.2/holder.min.js" type="text/javascript"></script>
+  <script>
+    Holder.add_theme("orange", { background:"#F1C40F", foreground:"#2C3E50", size:10 });
+  </script>
+
+  <!-- keen-analysis@1.2.2
+  <script src="https://d26b395fwzu5fz.cloudfront.net/keen-analysis-1.2.2.js" type="text/javascript"></script>
+
+  keen-dataviz@1.1.3 -->
+  <link href="https://d26b395fwzu5fz.cloudfront.net/keen-dataviz-1.1.3.css" rel="stylesheet" />
+  <script src="https://d26b395fwzu5fz.cloudfront.net/keen-dataviz-1.1.3.js" type="text/javascript"></script>
+
+  <!-- Dashboard -->
+  <link rel="stylesheet" type="text/css" href="assets/css/styleET1.css" />
+</head>
+<body class="keen-dashboard" style="padding-top: 80px;">
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="navbar-brand" href="https://github.com/Akashalives7/LA-Crime-Heroku-Deployment">Visualization &raquo; Los Angeles Crimes</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="assets/images/Team.png">Team</a></li>
+          <li><a href="https://github.com/Jonheston">JHeston GitHub</a></li> -->
+          <li><a href="https://github.com/shrawantee">SSaha GitHub</a></li> -->
+          <li><a href="https://github.com/benjkedl">BKedl GitHub</a></li> -->
+          <li><a href="https://github.com/Akashalives7">ETrittipo GitHub</a></li> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-1">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Used
+          </div>
+          <div class="chart-stage">
+            <img src="assets/images/d3.png" alt="D3 Logo" style="width:50px;height:60px;"> <br>
+            <img src="assets/images/Choropleth.png" alt="Choropleth Image" style="width:60px;height:50px;"> <br>
+            <img src="assets/images/JSLogo.jpg" alt="Java Script Logo" style="width:50px;height:60px;"> <br>
+            <img src="assets/images/Leaflet.png" alt="Leaflet Logo" style="width:50px;height:60px;"> <br>
+            <img src="assets/images/mongodb-logo-1.png" alt="Mongo DB Logo" style="width:50px;height:60px;"> <br>
+            <img src="assets/images/PythonLogo.jpg" alt="Python Logo" style="width:50px;height:60px;"> <br>
+            <img src="assets/images/json.png" alt="JSon Logo" style="width:60px;height:60px;"> <br>
+            <img src="assets/images/ChartJS.jpg" alt="Chart JS Logo" style="width:60px;height:60px;"> <br>
+            <img src="assets/images/Plotly.png" alt="Plotly Logo" style="width:60px;height:60px;"> <br>
+            <img src="assets/images/Pandas.png" alt="Pandas Logo" style="width:50px;height:60px;"> <br>
+            <img src="assets/images/Jupyter.png" alt="Jupyter Logo" style="width:60px;height:50px;"> <br>
+            <img src="assets/images/JSLogo.jpg" alt="Java Script Logo" style="width:50px;height:60px;"> <br>
+            <img src="assets/images/Leaflet.png" alt="Leaflet Logo" style="width:50px;height:60px;"> <br>
+            <img src="assets/images/mongodb-logo-1.png" alt="Mongo DB Logo" style="width:50px;height:60px;"> <br>
+            <img src="assets/images/PythonLogo.jpg" alt="Python Logo" style="width:50px;height:60px;"> <br>
+            <img src="assets/images/json.png" alt="JSon Logo" style="width:60px;height:60px;"> <br>
+            <img src="assets/images/ChartJS.jpg" alt="Chart JS Logo" style="width:60px;height:60px;"> <br>
+            <img src="assets/images/Plotly.png" alt="Plotly Logo" style="width:60px;height:60px;"> <br>
+          </div>
+          <div class="chart-notes">
+            Logos
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-11">
+        <div class="row">
+          <div class="col-sm-11">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+                Los Angeles Crime Visualizations. Data Range 2010-2017.
+              </div>
+              <div class="chart-stage">
+                <img src="assets/images/LACrimeSmall.png" style="width:1070px;height:100px;">
+              </div>
+              <div class="chart-notes">
+                Violent Crimes.
+              </div>
+            </div>
+          </div>
+        </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-11">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+                Title of Visualization.
+              </div>
+              <div class="chart-stage">
+                <img src="holder.js/1000%x500/white" alt="Image" style="width:1000px;height:500px;">
+                <!-- <button type="button" class="btn btn-primary btn-block btn-warning" href=/Choropleth>VS1</button> -->
+              </div>
+              <div class="chart-notes">
+                  Libraries Used: Java Script, Python, JSon, LeafLet, Mongo DB.
+              </div>
+            </div>
+          </div>
+        </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</html>
