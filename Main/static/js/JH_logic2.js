@@ -133,7 +133,7 @@ var legend = L.control({position: 'bottomright'});
 			to = grades[i + 1];
 
 			labels.push(
-				'<i style="background:' + getColor(from + 1) + '"></i> ' +
+				'<li style="background:' + getColor(from + 1) + '"></li> ' +
 				from + (to ? '&ndash;' + to : '+'));
 		}
 

@@ -129,10 +129,10 @@ var legend = L.control({position: 'bottomright'});
 			to = grades[i + 1];
 
 			labels.push(
-				'<i style="background:' + getColor(grades[i]+1) + '"></i> ' +
+				'<li style="background:' + getColor(grades[i]+1) + '"></li> ' +
 				from + (to ? '&ndash;' + to : '+'));
 		}
-
+		console.log(labels)
 		div.innerHTML = labels.join('<br>');
 		return div;
 	};
